@@ -47,7 +47,7 @@ cursor_number = 0
 while True:
     cursor_number, keys = r.execute_command(
         'scan', cursor_number, "match", argv.pattern, "count", batch_size)
-    if cursor_number == '0':
-        break
     for key in keys:
         print(key)
+    if cursor_number == '0':
+        break

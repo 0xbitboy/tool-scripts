@@ -52,12 +52,12 @@ pipe = r.pipeline()
 while True:
     cursor_number, keys = r.execute_command(
         'scan', cursor_number, "match", argv.pattern, "count", 5000)
-    if cursor_number == '0':
-        break
+
     for key in keys:
         ttl = randint(ttl_min, ttl_max)
         pipe.expire(key,ttl)
         print("EXPIRE ", key , ttl)
-    
     if len(keys) > 0 :
-        pipe.execute()
+        pipe.execute()               
+    if cursor_number == '0':
+        break
