@@ -12,13 +12,13 @@ pip install -r requirements.txt
 
 - **redis_scan_key_by_pattern.py**  根据通配符扫描所有KEY
 ```
-usage: redis_scan_key_by_pattern.py [-h] --host HOST [--port PORT] 
+usage: redis_scan_key_by_pattern.py [-h] --host HOST [--port PORT] [--database DB]
                                    pattern batch_size
 ```
 - **redis_set_ttl_by_pattern.py**  给符合通配符的KEY设置一个过期时间
 
 ```
-usage: redis_set_ttl_by_pattern.py [-h] --host HOST [--port PORT]
+usage: redis_set_ttl_by_pattern.py [-h] --host HOST [--port PORT] [--database DB]
                                    pattern ttl [ttl ...]
 ```
 ```

@@ -21,6 +21,13 @@ parser.add_argument(
     type=int,
     default="6379",
     help="Redis port.")   
+
+parser.add_argument(
+"--database",
+    type=int,
+    default="0",
+    help="Redis database.")
+
 parser.add_argument(
     'pattern',
     help="key pattern for scan."
@@ -38,7 +45,7 @@ ttl_range = argv.ttl
 ttl_min = ttl_range[0]
 ttl_max = ttl_range[0] if len(ttl_range) == 1 else ttl_range[1]
 
-r = redis.Redis(host=argv.host, port=argv.port,db=0, decode_responses=True)
+r = redis.Redis(host=argv.host, port=argv.port,db=argv.database, decode_responses=True)
 cursor_number = 0
 pipe = r.pipeline()
 
