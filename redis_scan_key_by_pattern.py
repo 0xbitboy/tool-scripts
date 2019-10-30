@@ -20,7 +20,13 @@ parser.add_argument(
     type=int,
     default="6379",
     help="Redis port.")
-    
+
+parser.add_argument(
+    "--database",
+    type=int,
+    default="0",
+    help="Redis database.")
+
 parser.add_argument(
     'pattern',
     help="key pattern for scan."
@@ -35,7 +41,7 @@ parser.add_argument(
 argv = parser.parse_args()
 batch_size = argv.batch_size
 
-r = redis.Redis(host=argv.host, port=argv.port,db=0, decode_responses=True)
+r = redis.Redis(host=argv.host, port=argv.port,db=argv.database, decode_responses=True)
 cursor_number = 0
 
 while True:
